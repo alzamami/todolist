@@ -1,4 +1,3 @@
-import { TitleStyled } from "../styles";
 import ToDoItem from "./ToDoItem";
 import dataStore from "../sotes/dataStore";
 import { observer } from "mobx-react";
