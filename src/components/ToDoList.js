@@ -26,6 +26,7 @@ const ToDoList = () => {
   };
   return (
     <div>
+      {/* Add Task input and button */}
       <form className="col-4 mx-auto" onSubmit={handleSubmit}>
         <div className="input-group mb-3 ">
           <input
@@ -44,14 +45,45 @@ const ToDoList = () => {
           </button>
         </div>
       </form>
-      {undoneList.map((toDo) => (
-        <ToDoItem toDo={toDo} />
-      ))}
-      <h1>-------------</h1>
+      {/* New Task Table */}
+      <div>
+        {(undoneList.length !== 0) ?
+          <table className=" table table-dark text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            {undoneList.map((toDo, i) => (
+              <ToDoItem toDo={toDo} i={i} />
+            ))}
+          </table>
+          :
+          <div class="p-3 mb-2 bg-success text-white text-center">All Tasks Completed</div>}
 
-      {doneList.map((toDo) => (
-        <ToDoItem toDo={toDo} />
-      ))}
+      </div>
+      <hr />
+      {(doneList.length !== 0) ?
+        <table className=" table table-dark text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Task Name</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          {doneList.map((toDo, i) => (
+            <ToDoItem toDo={toDo} i={i} design={"table-success"} />
+          ))}
+        </table>
+        :
+        <div class="p-3 mb-2 bg-warning text-dark text-center">No Tasks Completed</div>
+      }
+
     </div>
   );
 };

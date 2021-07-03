@@ -1,6 +1,5 @@
 import axios from "axios";
 import { makeAutoObservable } from "mobx";
-import data from "../data";
 
 class DataStore {
   data = [];
@@ -11,7 +10,7 @@ class DataStore {
 
   newTask = async (newTask) => {
     try {
-      const response = await axios.post("http://localhost:8000/task", newTask);
+      await axios.post("http://localhost:8000/task", newTask);
 
       newTask.id = this.data.length + 1;
       newTask.stat = false;
