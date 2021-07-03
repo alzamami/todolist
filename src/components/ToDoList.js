@@ -5,7 +5,10 @@ import { useState } from "react";
 
 const ToDoList = () => {
   const doneList = dataStore.data.filter((toDo) => toDo.stat === true);
-  const undoneList = dataStore.data.filter((toDo) => toDo.stat === false);
+  const undoneList = dataStore.data.filter((toDo) => toDo.stat === false).sort((a, b) => {
+    const orders = { 'LOW': 2, 'MEDIUM': 1, 'HIGH': 0 };
+    return orders[a.priority] - orders[b.priority];
+  });
 
   const [newName, setNewName] = useState({
     name: "",
@@ -20,9 +23,12 @@ const ToDoList = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dataStore.newTask(newName);
+    console.log(event.target.name.value)
     event.target.name.value = "";
-    console.log(newName);
+    dataStore.newTask(newName);
+    setNewName({
+      name: "",
+    })
   };
   return (
     <div>

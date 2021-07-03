@@ -11,10 +11,9 @@ class DataStore {
   newTask = async (newTask) => {
     try {
       await axios.post("http://localhost:8000/task", newTask);
-
       newTask.id = this.data.length + 1;
       newTask.stat = false;
-
+      newTask.priority = "LOW"
       this.data.push(newTask);
     } catch (error) {
       console.error(error);
@@ -24,12 +23,22 @@ class DataStore {
   updateStat = async (updateStat) => {
     try {
       const task = this.data.find((data) => data.id === updateStat.id);
-
       if (task.stat) task.stat = false;
       else task.stat = true;
       await axios.put(
         `http://localhost:8000/task/${updateStat.id}`,
         updateStat
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  updatePri = async (updatePri) => {
+    try {
+      this.data.find((data) => data.id === updatePri.id);
+      await axios.put(
+        `http://localhost:8000/task/${updatePri.id}`,
+        updatePri
       );
     } catch (error) {
       console.error(error);
