@@ -1,4 +1,5 @@
 import "./App.css";
+/* Components */
 import ToDoList from "./components/ToDoList";
 import { HeadTitle } from "./styles";
 

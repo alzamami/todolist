@@ -1,6 +1,9 @@
+/* Libraries */
 import styled from "styled-components";
+/* React Icon */
 import { AiOutlineCheckCircle, AiOutlineDelete, AiOutlineUndo } from 'react-icons/ai';
 import { FcHighPriority } from 'react-icons/fc'
+
 /* Start App  */
 export const HeadTitle = styled.h1`
   text-align: center;
@@ -8,9 +11,6 @@ export const HeadTitle = styled.h1`
   margin: 15px;
 `;
 /* End App  */
-/* Start ToDoList Components */
-
-/* End ToDoList Components */
 
 /* Start ToDoItem Components */
 export const CompleteTask = styled(AiOutlineCheckCircle)`
